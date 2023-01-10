@@ -1,41 +1,41 @@
 export const menuOptions = [
   {
-    imageUrl: '../assets/menu/1-expresso.svg',
+    id: 1,
     tags: ['Tradicional'],
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/2-americano.svg',
+    id: 2,
     tags: ['Tradicional'],
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/3-expresso-cremoso.svg',
+    id: 3,
     tags: ['Tradicional'],
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/4-café-gelado.svg',
+    id: 4,
     tags: ['Tradicional', 'Gelado'],
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/5-café-com-leite.svg',
+    id: 5,
     tags: ['Tradicional', 'Com Leite'],
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/6-latte.svg',
+    id: 6,
     tags: ['Tradicional', 'Com Leite'],
     title: 'Latte',
     description:
@@ -43,7 +43,7 @@ export const menuOptions = [
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/7-cappuccino.svg',
+    id: 7,
     tags: ['Tradicional', 'Com Leite'],
     title: 'Cappuccino',
     description:
@@ -51,7 +51,7 @@ export const menuOptions = [
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/8-macchiato.svg',
+    id: 8,
     tags: ['Tradicional', 'Com Leite'],
     title: 'Macchiato',
     description:
@@ -59,21 +59,21 @@ export const menuOptions = [
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/9-mochaccino.svg',
+    id: 9,
     tags: ['Tradicional', 'Com Leite'],
     title: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/10-chocolate-quente.svg',
+    id: 10,
     tags: ['Especial', 'Com Leite'],
     title: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/11-cubano.svg',
+    id: 11,
     tags: ['Especial', 'Alcoólico', 'Gelado'],
     title: 'Cubano',
     description:
@@ -81,21 +81,21 @@ export const menuOptions = [
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/12-havaiano.svg',
+    id: 12,
     tags: ['Especial'],
     title: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/13-árabe.svg',
+    id: 13,
     tags: ['Especial'],
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     price: 9.9,
   },
   {
-    imageUrl: '../assets/menu/14-irlandês.svg',
+    id: 14,
     tags: ['Especial', 'Alcoólico'],
     title: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',

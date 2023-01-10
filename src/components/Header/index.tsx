@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { HeaderContainer, HeaderContent, Location } from './styles'
 
-import logo from '../assets/logo.svg'
+import logo from '../../assets/logo.svg'
 import { useContext } from 'react'
-import { ShopContext } from '../context/ShopProvider'
+import { ShopContext } from '../../context/ShopProvider'
 
 export function Header() {
   const cart = useContext(ShopContext)

@@ -5,13 +5,14 @@ export const HeaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 24px;
+  max-width: 1096px;
+  margin: auto;
 `
 
 export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1120px;
   width: 100%;
 
   > div {
