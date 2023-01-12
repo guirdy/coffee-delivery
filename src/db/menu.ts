@@ -1,4 +1,12 @@
-export const menuOptions = [
+export interface Option {
+  id: number
+  tags: string[]
+  title: string
+  description: string
+  price: number
+}
+
+export const menuOptions: Option[] = [
   {
     id: 1,
     tags: ['Tradicional'],

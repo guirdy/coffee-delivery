@@ -1,8 +1,24 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useReducer } from 'react'
+import { Option } from '../db/menu'
+import {
+  addCoffeeInCartAction,
+  clearCoffeesInCartAction,
+  deleteCoffeeInCartByIdAction,
+  updateCoffeeInCartByIdAction,
+} from '../reducers/actions'
+import { coffeesInCartReducer } from '../reducers/reducer'
+
+export interface ICoffee {
+  coffeeData: Option
+  amount: number
+}
 
 interface ShopContextTypes {
-  shoppingCartItems: number
-  handleSetShoppingCartItems: () => void
+  coffeesInCart: ICoffee[]
+  addCoffeeInCart: (coffeeData: Option, amount: number) => void
+  updateCoffeeInCartById: (id: string, amount: number) => void
+  deleteCoffeeInCartById: (id: string) => void
+  clearCoffeesInCart: () => void
 }
 
 interface ShopProviderProps {
@@ -12,17 +28,40 @@ interface ShopProviderProps {
 export const ShopContext = createContext({} as ShopContextTypes)
 
 export const ShopProvider = ({ children }: ShopProviderProps) => {
-  const [shoppingCartItems, setShoppingCartItems] = useState(0)
+  const [coffeesInCart, dispatch] = useReducer(
+    coffeesInCartReducer,
+    [] as ICoffee[],
+  )
 
-  const handleSetShoppingCartItems = () => {
-    setShoppingCartItems(shoppingCartItems + 1)
+  function addCoffeeInCart(coffeeData: Option, amount: number) {
+    const cartItem: ICoffee = {
+      coffeeData,
+      amount,
+    }
+
+    dispatch(addCoffeeInCartAction(cartItem))
+  }
+
+  function updateCoffeeInCartById(id: string, amount: number) {
+    dispatch(updateCoffeeInCartByIdAction(id, amount))
+  }
+
+  function deleteCoffeeInCartById(id: string) {
+    dispatch(deleteCoffeeInCartByIdAction(id))
+  }
+
+  function clearCoffeesInCart() {
+    dispatch(clearCoffeesInCartAction())
   }
 
   return (
     <ShopContext.Provider
       value={{
-        shoppingCartItems,
-        handleSetShoppingCartItems,
+        coffeesInCart,
+        addCoffeeInCart,
+        updateCoffeeInCartById,
+        deleteCoffeeInCartById,
+        clearCoffeesInCart,
       }}
     >
       {children}
