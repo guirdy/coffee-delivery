@@ -10,6 +10,11 @@ export function Header() {
   const cart = useContext(ShopContext)
   const navigate = useNavigate()
 
+  const totalItemsInTheCart = cart.coffeesInCart.reduce(
+    (total, coffees) => total + coffees.amount,
+    0,
+  )
+
   const handleNavigate = () => {
     navigate('/cart')
   }
@@ -26,9 +31,7 @@ export function Header() {
           </Location>
           <button onClick={handleNavigate}>
             <ShoppingCart size={22} weight="fill" />
-            {cart.shoppingCartItems > 0 && (
-              <span>{cart.shoppingCartItems}</span>
-            )}
+            {totalItemsInTheCart > 0 && <span>{totalItemsInTheCart}</span>}
           </button>
         </div>
       </HeaderContent>

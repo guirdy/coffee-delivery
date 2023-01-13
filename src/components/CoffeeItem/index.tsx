@@ -20,7 +20,6 @@ export function CoffeeItem({ option }: CoffeeItemProps) {
   ) => {
     e.preventDefault()
     cartContext.addCoffeeInCart(coffeeData, amount)
-    console.log(cartContext.coffeesInCart)
   }
 
   return (
