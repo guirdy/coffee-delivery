@@ -16,6 +16,7 @@ export const MenuContainer = styled.div`
   align-items: center;
   justify-items: center;
   margin-top: 54px;
+  margin-bottom: 104px;
 
   @media (max-width: 1080px) {
     grid-template-columns: repeat(3, 1fr);
