@@ -4,6 +4,8 @@ import { ShopProvider } from './context/ShopProvider'
 import { Router } from './Router'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export function App() {
   return (
@@ -14,6 +16,7 @@ export function App() {
         </ShopProvider>
       </BrowserRouter>
 
+      <ToastContainer theme="colored" />
       <GlobalStyle />
     </ThemeProvider>
   )

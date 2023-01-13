@@ -2,6 +2,7 @@ import { ShoppingCartSimple } from 'phosphor-react'
 import { FormEvent, useContext, useState } from 'react'
 import { ICoffee, ShopContext } from '../../context/ShopProvider'
 import { Option } from '../../db/menu'
+import { notify } from '../../utils/toasty'
 
 import { CoffeeCard, Tags, FormContainer } from './styles'
 
@@ -20,6 +21,8 @@ export function CoffeeItem({ option }: CoffeeItemProps) {
   ) => {
     e.preventDefault()
     cartContext.addCoffeeInCart(coffeeData, amount)
+    setAmount(0)
+    notify('Café adicionado no carrinho!', 'success')
   }
 
   return (
