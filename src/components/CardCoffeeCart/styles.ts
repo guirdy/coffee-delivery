@@ -14,6 +14,10 @@ export const CardSelectedCoffee = styled.div`
     text-align: right;
     color: ${(props) => props.theme['base-text']};
   }
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+  }
 `
 
 export const CoffeeInfo = styled.div`
@@ -25,6 +29,10 @@ export const CoffeeInfo = styled.div`
   > img {
     width: 64px;
     height: 64px;
+  }
+
+  @media (max-width: 395px) {
+    flex-direction: column;
   }
 `
 

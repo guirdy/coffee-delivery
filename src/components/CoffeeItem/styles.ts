@@ -102,36 +102,53 @@ export const FormContainer = styled.div`
     align-items: center;
     justify-content: center;
     gap: 8px;
-
-    input {
-      padding: 8px;
-
-      max-width: 72px;
-      width: 100%;
-      height: 38px;
-
-      background: ${(props) => props.theme['base-button']};
-      border-radius: 6px;
-      border: none;
-
-      text-align: center;
-    }
-
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 8px;
-
-      width: 38px;
-      height: 38px;
-
-      color: ${(props) => props.theme.white};
-      background: ${(props) => props.theme['purple-dark']};
-      border-radius: 6px;
-      border: none;
-
-      cursor: pointer;
-    }
   }
+`
+
+export const CoffeeQt = styled.div`
+  display: flex;
+  padding: 8px;
+
+  max-width: 72px;
+  width: 100%;
+  height: 38px;
+
+  background: ${(props) => props.theme['base-button']};
+  border-radius: 6px;
+
+  text-align: center;
+
+  input {
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: center;
+  }
+`
+
+export const QtButton = styled.button`
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  > svg {
+    color: ${(props) => props.theme.purple};
+  }
+`
+
+export const SubmitButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+
+  width: 38px;
+  height: 38px;
+
+  color: ${(props) => props.theme.white};
+  background: ${(props) => props.theme['purple-dark']};
+  border-radius: 6px;
+  border: none;
+
+  cursor: pointer;
 `

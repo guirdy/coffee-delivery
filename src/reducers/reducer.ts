@@ -33,8 +33,19 @@ export function coffeesInCartReducer(state: ICoffee[], action: any) {
 
         if (indexDraft > -1) {
           if (draft[indexDraft].amount > 1) {
-            draft[indexDraft].amount = draft[indexDraft].amount - 1
+            draft[indexDraft].amount -= 1
           }
+        }
+      })
+
+    case ActionTypes.INCREASE_COFFEE_IN_CART_BY_ID:
+      return produce(state, (draft) => {
+        const indexDraft = draft.findIndex((draft) => {
+          return draft.coffeeData.id === action.payload.id
+        })
+
+        if (indexDraft > -1) {
+          draft[indexDraft].amount += 1
         }
       })
 

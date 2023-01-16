@@ -27,6 +27,14 @@ export function CardCoffeeCart({ coffee }: CardCoffeeCartProps) {
     cartContext.decreaseCoffeeInCartById(id)
   }
 
+  const handleIncreaseCoffeeQt = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+    id: number,
+  ) => {
+    console.log(id)
+    cartContext.increaseCoffeeInCartById(id)
+  }
+
   return (
     <CardSelectedCoffee>
       <CoffeeInfo>
@@ -44,7 +52,9 @@ export function CardCoffeeCart({ coffee }: CardCoffeeCartProps) {
                 <Minus size={14} weight="thin" />
               </button>
               <span>{coffee.amount}</span>
-              <button>
+              <button
+                onClick={(e) => handleIncreaseCoffeeQt(e, coffee.coffeeData.id)}
+              >
                 <Plus size={14} weight="thin" />
               </button>
             </EditQt>
