@@ -25,13 +25,19 @@ export function coffeesInCartReducer(state: ICoffee[], action: any) {
         }
       })
 
-    case ActionTypes.UPDATE_COFFEE_IN_CART_BY_ID:
-      return state.map((coffee) => {
-        if (coffee.coffeeData.id === action.payload.coffee.coffeeData.id) {
-          return { ...coffee, amount: action.payload.amount }
+    case ActionTypes.DECREASE_COFFEE_IN_CART_BY_ID:
+      return produce(state, (draft) => {
+        const indexDraft = draft.findIndex((draft) => {
+          return draft.coffeeData.id === action.payload.id
+        })
+
+        if (indexDraft > -1) {
+          if (draft[indexDraft].amount > 1) {
+            draft[indexDraft].amount = draft[indexDraft].amount - 1
+          }
         }
-        return coffee
       })
+
     case ActionTypes.CLEAR_COFFEES_IN_CART:
       return []
     default:

@@ -54,3 +54,9 @@ export const ContainerTitle = styled.h1`
   align-items: center;
   color: ${(props) => props.theme['base-subtitle']};
 `
+
+export const Divider = styled.div`
+  width: 100%;
+  margin: 24px auto;
+  border-bottom: 1px solid ${(props) => props.theme['base-button']};
+`

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { HeaderContainer, HeaderContent, Location } from './styles'
 
@@ -22,7 +22,9 @@ export function Header() {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <img src={logo} alt="Coffee Logotipo" />
+        <Link to={'/'}>
+          <img src={logo} alt="Coffee Logotipo" />
+        </Link>
 
         <div>
           <Location>

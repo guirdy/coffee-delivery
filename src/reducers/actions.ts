@@ -3,7 +3,7 @@ import { ICoffee } from '../context/ShopProvider'
 export enum ActionTypes {
   DELETE_COFFEE_IN_CART_BY_ID = 'DELETE_COFFEE_IN_CART_BY_ID',
   ADD_COFFEE_IN_CART = 'ADD_COFFEE_IN_CART',
-  UPDATE_COFFEE_IN_CART_BY_ID = 'UPDATE_COFFEE_IN_CART_BY_ID',
+  DECREASE_COFFEE_IN_CART_BY_ID = 'DECREASE_COFFEE_IN_CART_BY_ID',
   CLEAR_COFFEES_IN_CART = 'CLEAR_COFFEES_IN_CART',
 }
 
@@ -16,17 +16,16 @@ export function addCoffeeInCartAction(coffee: ICoffee) {
   }
 }
 
-export function updateCoffeeInCartByIdAction(id: string, amount: number) {
+export function decreaseCoffeeInCartByIdAction(id: number) {
   return {
-    type: ActionTypes.UPDATE_COFFEE_IN_CART_BY_ID,
+    type: ActionTypes.DECREASE_COFFEE_IN_CART_BY_ID,
     payload: {
       id,
-      amount,
     },
   }
 }
 
-export function deleteCoffeeInCartByIdAction(id: string) {
+export function deleteCoffeeInCartByIdAction(id: number) {
   return {
     type: ActionTypes.DELETE_COFFEE_IN_CART_BY_ID,
     payload: {

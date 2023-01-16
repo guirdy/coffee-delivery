@@ -4,7 +4,7 @@ import {
   addCoffeeInCartAction,
   clearCoffeesInCartAction,
   deleteCoffeeInCartByIdAction,
-  updateCoffeeInCartByIdAction,
+  decreaseCoffeeInCartByIdAction,
 } from '../reducers/actions'
 import { coffeesInCartReducer } from '../reducers/reducer'
 
@@ -16,8 +16,8 @@ export interface ICoffee {
 interface ShopContextTypes {
   coffeesInCart: ICoffee[]
   addCoffeeInCart: (coffeeData: Option, amount: number) => void
-  updateCoffeeInCartById: (id: string, amount: number) => void
-  deleteCoffeeInCartById: (id: string) => void
+  decreaseCoffeeInCartById: (id: number) => void
+  deleteCoffeeInCartById: (id: number) => void
   clearCoffeesInCart: () => void
 }
 
@@ -42,11 +42,11 @@ export const ShopProvider = ({ children }: ShopProviderProps) => {
     dispatch(addCoffeeInCartAction(cartItem))
   }
 
-  function updateCoffeeInCartById(id: string, amount: number) {
-    dispatch(updateCoffeeInCartByIdAction(id, amount))
+  function decreaseCoffeeInCartById(id: number) {
+    dispatch(decreaseCoffeeInCartByIdAction(id))
   }
 
-  function deleteCoffeeInCartById(id: string) {
+  function deleteCoffeeInCartById(id: number) {
     dispatch(deleteCoffeeInCartByIdAction(id))
   }
 
@@ -59,7 +59,7 @@ export const ShopProvider = ({ children }: ShopProviderProps) => {
       value={{
         coffeesInCart,
         addCoffeeInCart,
-        updateCoffeeInCartById,
+        decreaseCoffeeInCartById,
         deleteCoffeeInCartById,
         clearCoffeesInCart,
       }}
