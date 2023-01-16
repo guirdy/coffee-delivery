@@ -5,10 +5,15 @@ import { produce } from 'immer'
 export function coffeesInCartReducer(state: ICoffee[], action: any) {
   switch (action.type) {
     case ActionTypes.DELETE_COFFEE_IN_CART_BY_ID:
-      return state.filter(
-        (coffee) =>
-          coffee.coffeeData.id !== action.payload.coffee.coffeeData.id,
-      )
+      return produce(state, (draft) => {
+        const indexDraft = draft.findIndex((draft) => {
+          return draft.coffeeData.id === action.payload.id
+        })
+
+        if (indexDraft > -1) {
+          draft.splice(indexDraft, 1)
+        }
+      })
     case ActionTypes.ADD_COFFEE_IN_CART:
       return produce(state, (draft) => {
         const indexDraft = draft.findIndex((draft) => {

@@ -19,20 +19,16 @@ export function CardCoffeeCart({ coffee }: CardCoffeeCartProps) {
 
   const coffeeTotal = coffee.coffeeData.price * coffee.amount
 
-  const handleDecreaseCoffeeQt = (
-    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-    id: number,
-  ) => {
-    console.log(id)
+  const handleDecreaseCoffeeQt = (id: number) => {
     cartContext.decreaseCoffeeInCartById(id)
   }
 
-  const handleIncreaseCoffeeQt = (
-    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-    id: number,
-  ) => {
-    console.log(id)
+  const handleIncreaseCoffeeQt = (id: number) => {
     cartContext.increaseCoffeeInCartById(id)
+  }
+
+  const handleRemoveCoffee = (id: number) => {
+    cartContext.deleteCoffeeInCartById(id)
   }
 
   return (
@@ -47,19 +43,21 @@ export function CardCoffeeCart({ coffee }: CardCoffeeCartProps) {
           <div>
             <EditQt>
               <button
-                onClick={(e) => handleDecreaseCoffeeQt(e, coffee.coffeeData.id)}
+                onClick={() => handleDecreaseCoffeeQt(coffee.coffeeData.id)}
               >
                 <Minus size={14} weight="thin" />
               </button>
               <span>{coffee.amount}</span>
               <button
-                onClick={(e) => handleIncreaseCoffeeQt(e, coffee.coffeeData.id)}
+                onClick={() => handleIncreaseCoffeeQt(coffee.coffeeData.id)}
               >
                 <Plus size={14} weight="thin" />
               </button>
             </EditQt>
 
-            <RemoveButton>
+            <RemoveButton
+              onClick={() => handleRemoveCoffee(coffee.coffeeData.id)}
+            >
               <Trash size={16} weight="thin" />
               Remover
             </RemoveButton>

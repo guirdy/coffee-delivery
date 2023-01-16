@@ -39,7 +39,7 @@ export function deleteCoffeeInCartByIdAction(id: number) {
   return {
     type: ActionTypes.DELETE_COFFEE_IN_CART_BY_ID,
     payload: {
-      coffeeId: id,
+      id,
     },
   }
 }
