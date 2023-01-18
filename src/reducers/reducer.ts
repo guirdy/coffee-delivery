@@ -20,8 +20,6 @@ export function coffeesInCartReducer(state: ICoffee[], action: any) {
           return draft.coffeeData.id === action.payload.coffee.coffeeData.id
         })
 
-        console.log(indexDraft)
-
         if (indexDraft > -1) {
           draft[indexDraft].amount = draft[indexDraft].amount +=
             action.payload.coffee.amount

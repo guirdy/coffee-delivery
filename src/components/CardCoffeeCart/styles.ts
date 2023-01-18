@@ -97,9 +97,14 @@ export const RemoveButton = styled.button`
   border-radius: 6px;
   border: none;
 
+  transition: background 0.2s;
   cursor: pointer;
 
   > svg {
     color: ${(props) => props.theme.purple};
+  }
+
+  &:hover {
+    background: ${(props) => props.theme['base-hover']};
   }
 `

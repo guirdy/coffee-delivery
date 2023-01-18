@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CartContainer = styled.div`
+export const CartContainer = styled.form`
   display: flex;
   flex-direction: column;
   margin: 54px 0 108px;
@@ -59,4 +59,79 @@ export const Divider = styled.div`
   width: 100%;
   margin: 24px auto;
   border-bottom: 1px solid ${(props) => props.theme['base-button']};
+`
+
+export const TotalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const TotalItems = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+
+  span {
+    font-weight: 400;
+    line-height: 130%;
+
+    color: ${(props) => props.theme['base-text']};
+  }
+
+  span:first-child {
+    font-size: 0.875rem;
+    text-align: start;
+  }
+
+  span:last-child {
+    font-size: 1rem;
+    text-align: right;
+  }
+`
+
+export const Delivery = styled(TotalItems)``
+
+export const TotalPrice = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 24px;
+
+  span {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 130%;
+
+    color: ${(props) => props.theme['base-subtitle']};
+  }
+
+  span:last-child {
+    text-align: right;
+  }
+`
+
+export const ConfirmButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 8px;
+  line-height: 160%;
+  width: 100%;
+
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-stretch: 100;
+
+  color: ${(props) => props.theme.white};
+  background: ${(props) => props.theme.yellow};
+  border-radius: 6px;
+  border: none;
+
+  transition: background 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme['yellow-dark']};
+  }
 `

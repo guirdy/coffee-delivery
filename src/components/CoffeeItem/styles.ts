@@ -150,5 +150,10 @@ export const SubmitButton = styled.button`
   border-radius: 6px;
   border: none;
 
+  transition: background 0.2s;
   cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme.purple};
+  }
 `

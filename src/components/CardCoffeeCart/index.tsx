@@ -1,5 +1,5 @@
 import { Minus, Plus, Trash } from 'phosphor-react'
-import { MouseEvent, useContext } from 'react'
+import { useContext } from 'react'
 import { ICoffee, ShopContext } from '../../context/ShopProvider'
 import { currencyBRL } from '../../utils/currency'
 import {
@@ -43,12 +43,14 @@ export function CardCoffeeCart({ coffee }: CardCoffeeCartProps) {
           <div>
             <EditQt>
               <button
+                type="button"
                 onClick={() => handleDecreaseCoffeeQt(coffee.coffeeData.id)}
               >
                 <Minus size={14} weight="thin" />
               </button>
               <span>{coffee.amount}</span>
               <button
+                type="button"
                 onClick={() => handleIncreaseCoffeeQt(coffee.coffeeData.id)}
               >
                 <Plus size={14} weight="thin" />
