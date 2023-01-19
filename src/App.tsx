@@ -16,7 +16,7 @@ export function App() {
         </ShopProvider>
       </BrowserRouter>
 
-      <ToastContainer theme="colored" />
+      <ToastContainer />
       <GlobalStyle />
     </ThemeProvider>
   )

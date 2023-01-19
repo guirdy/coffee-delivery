@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useReducer } from 'react'
+import { createContext, ReactNode, useReducer, useState } from 'react'
 import { Option } from '../db/menu'
 import {
   addCoffeeInCartAction,
@@ -14,13 +14,29 @@ export interface ICoffee {
   amount: number
 }
 
+export interface PurchaseData {
+  coffees: ICoffee[]
+  address: {
+    cep: string
+    street: string
+    number: number
+    complement: string
+    district: string
+    city: string
+    uf: string
+  }
+  paymentOption: string
+}
+
 interface ShopContextTypes {
   coffeesInCart: ICoffee[]
+  purchaseData: PurchaseData | null
   addCoffeeInCart: (coffeeData: Option, amount: number) => void
   decreaseCoffeeInCartById: (id: number) => void
   increaseCoffeeInCartById: (id: number) => void
   deleteCoffeeInCartById: (id: number) => void
   clearCoffeesInCart: () => void
+  handlePurchaseData: (data: PurchaseData) => void
 }
 
 interface ShopProviderProps {
@@ -34,6 +50,8 @@ export const ShopProvider = ({ children }: ShopProviderProps) => {
     coffeesInCartReducer,
     [] as ICoffee[],
   )
+
+  const [purchaseData, setPurchaseData] = useState<PurchaseData | null>(null)
 
   function addCoffeeInCart(coffeeData: Option, amount: number) {
     const cartItem: ICoffee = {
@@ -64,11 +82,15 @@ export const ShopProvider = ({ children }: ShopProviderProps) => {
     <ShopContext.Provider
       value={{
         coffeesInCart,
+        purchaseData,
         addCoffeeInCart,
         decreaseCoffeeInCartById,
         deleteCoffeeInCartById,
         increaseCoffeeInCartById,
         clearCoffeesInCart,
+        handlePurchaseData: (purchaseData: PurchaseData) => {
+          setPurchaseData(purchaseData)
+        },
       }}
     >
       {children}

@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const CartContainer = styled.form`
+interface StyledProps {
+  selectedOption: boolean
+}
+
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   margin: 54px 0 108px;
@@ -20,12 +24,106 @@ export const FormAddress = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
+  max-width: 640px;
+
+  input {
+    padding: 12px;
+
+    background: ${(props) => props.theme['base-input']};
+
+    border: 1px solid ${(props) => props.theme['base-button']};
+    border-radius: 4px;
+
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 130%;
+    color: ${(props) => props.theme['base-text']};
+  }
+`
+
+export const FirstColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  margin-top: 32px;
+
+  input:first-child {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  input:last-child {
+    width: 100%;
+  }
+`
+export const SecondColumn = styled.div`
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+
+  input:first-child {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  input:last-child {
+    width: 100%;
+  }
+`
+export const ThirdColumn = styled.div`
+  display: flex;
+  gap: 4px;
+
+  input:first-child {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  input + input {
+    max-width: 276px;
+    width: 100%;
+  }
+
+  input:last-child {
+    max-width: 60px;
+    width: 100%;
+    text-transform: uppercase;
+  }
 `
 
 export const CardDefault = styled.div`
   padding: 40px;
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px;
+
+  > div {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+
+    > div {
+      h1 {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 130%;
+        color: ${(props) => props.theme['base-subtitle']};
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 130%;
+        color: ${(props) => props.theme['base-text']};
+      }
+    }
+
+    svg {
+      color: ${(props) => props.theme['yellow-dark']};
+    }
+  }
 `
 
 export const CoffeesCard = styled.div`
@@ -98,7 +196,7 @@ export const TotalPrice = styled.div`
   width: 100%;
   margin-bottom: 24px;
 
-  span {
+  strong {
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 130%;
@@ -106,7 +204,7 @@ export const TotalPrice = styled.div`
     color: ${(props) => props.theme['base-subtitle']};
   }
 
-  span:last-child {
+  strong:last-child {
     text-align: right;
   }
 `
@@ -134,4 +232,9 @@ export const ConfirmButton = styled.button`
   &:hover {
     background: ${(props) => props.theme['yellow-dark']};
   }
+`
+
+export const PaymentOptionButton = styled.button<StyledProps>`
+  text-transform: uppercase;
+  border: ${(props) => (props.selectedOption ? '1px solid #000' : 'none')};
 `
