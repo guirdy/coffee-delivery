@@ -89,6 +89,8 @@ export function Cart() {
       paymentOption: PAYMENT_OPTIONS[selectedPaymentMethod].type,
     }
 
+    console.log(purchaseData)
+
     cart.handlePurchaseData(purchaseData)
     cart.clearCoffeesInCart()
     setSelectedPaymentMethod(-1)
