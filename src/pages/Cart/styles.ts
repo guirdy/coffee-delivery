@@ -10,19 +10,19 @@ export const FormContainer = styled.form`
   margin: 54px 0 108px;
 `
 export const GridContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 32px;
   align-items: flex-start;
 
-  @media (max-width: 760px) {
-    grid-template-columns: 1fr;
+  @media (max-width: 920px) {
+    flex-direction: column;
   }
 `
 
 export const FormAddress = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 32px;
   width: 100%;
   max-width: 640px;
@@ -82,7 +82,6 @@ export const ThirdColumn = styled.div`
   }
 
   input + input {
-    max-width: 276px;
     width: 100%;
   }
 
@@ -130,6 +129,16 @@ export const CoffeesCard = styled.div`
   padding: 40px;
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 44px;
+`
+
+export const ImgContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > img {
+    width: 56px;
+  }
 `
 
 export const CartContent = styled.div`
@@ -234,7 +243,36 @@ export const ConfirmButton = styled.button`
   }
 `
 
+export const PaymentContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+`
+// color: `${(props) => props.theme.purple}
 export const PaymentOptionButton = styled.button<StyledProps>`
-  text-transform: uppercase;
-  border: ${(props) => (props.selectedOption ? '1px solid #000' : 'none')};
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  text-align: left;
+
+  background: ${(props) => props.theme['base-button']};
+  border-radius: 6px;
+
+  border: ${(props) => (props.selectedOption ? '1px solid #8047F8' : 'none')};
+
+  cursor: pointer;
+
+  svg {
+    color: ${(props) => props.theme.purple} !important;
+  }
+
+  > span {
+    font-size: 0.75rem;
+    line-height: 160%;
+
+    text-transform: uppercase;
+    color: ${(props) => props.theme['base-text']};
+  }
 `

@@ -29,7 +29,7 @@ export function Header() {
         <div>
           <Location>
             <MapPin size={22} weight="fill" />
-            Porto Alegre, RS
+            Cidade, NS
           </Location>
           <button onClick={handleNavigate}>
             <ShoppingCart size={22} weight="fill" />

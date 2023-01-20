@@ -1,4 +1,10 @@
-import { MapPinLine } from 'phosphor-react'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from 'phosphor-react'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitHandler } from 'react-hook-form/dist/types'
@@ -24,11 +30,29 @@ import {
   SecondColumn,
   ThirdColumn,
   PaymentOptionButton,
+  ImgContainer,
+  PaymentContainer,
 } from './styles'
+
+import emptyCart from '../../assets/cart-empty.png'
+import { useNavigate } from 'react-router-dom'
 
 const DELIVERY_PRICE = 3.5
 
-const PAYMENT_OPTIONS = ['Cartão de Crédito', 'Cartão de Débito', 'Dinheiro']
+const PAYMENT_OPTIONS = [
+  {
+    icon: <CreditCard size={16} />,
+    type: 'Cartão de Crédito',
+  },
+  {
+    icon: <Bank size={16} />,
+    type: 'Cartão de Débito',
+  },
+  {
+    icon: <Money size={16} />,
+    type: 'Dinheiro',
+  },
+]
 
 interface Inputs {
   cep: string
@@ -42,6 +66,8 @@ interface Inputs {
 
 export function Cart() {
   const cart = useContext(ShopContext)
+
+  const navigate = useNavigate()
 
   const { register, handleSubmit, reset } = useForm<Inputs>()
 
@@ -60,7 +86,7 @@ export function Cart() {
     const purchaseData: PurchaseData = {
       coffees: cart.coffeesInCart,
       address: data,
-      paymentOption: PAYMENT_OPTIONS[selectedPaymentMethod],
+      paymentOption: PAYMENT_OPTIONS[selectedPaymentMethod].type,
     }
 
     cart.handlePurchaseData(purchaseData)
@@ -68,6 +94,7 @@ export function Cart() {
     setSelectedPaymentMethod(-1)
     reset()
     notify('Compra realizada com sucesso', 'success')
+    navigate('/success')
   }
 
   return (
@@ -134,17 +161,28 @@ export function Cart() {
           </CardDefault>
           <CardDefault>
             <div>
+              <CurrencyDollar size={22} color={'#8047F8'} />
+              <div>
+                <h1>Pagamento</h1>
+                <p>
+                  O pagamento é feito na entrega. Escolha a forma que deseja
+                  pagar
+                </p>
+              </div>
+            </div>
+            <PaymentContainer>
               {PAYMENT_OPTIONS.map((option, index) => (
                 <PaymentOptionButton
-                  key={option}
+                  key={option.type}
                   type="button"
                   selectedOption={index === selectedPaymentMethod}
                   onClick={() => setSelectedPaymentMethod(index)}
                 >
-                  {option}
+                  {option.icon}
+                  <span>{option.type}</span>
                 </PaymentOptionButton>
               ))}
-            </div>
+            </PaymentContainer>
           </CardDefault>
         </FormAddress>
 
@@ -158,7 +196,7 @@ export function Cart() {
               </div>
             ))}
 
-            {!!cart.coffeesInCart.length && (
+            {cart.coffeesInCart.length ? (
               <TotalContainer>
                 <TotalItems>
                   <span>Total de itens</span>
@@ -177,6 +215,10 @@ export function Cart() {
 
                 <ConfirmButton type="submit">Confirmar pedido</ConfirmButton>
               </TotalContainer>
+            ) : (
+              <ImgContainer>
+                <img src={emptyCart} alt="empty-cart" />
+              </ImgContainer>
             )}
           </CoffeesCard>
         </CartContent>
